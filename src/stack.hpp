@@ -63,7 +63,17 @@ void push_all(Stack & stk, string line) {
 
 void pop_all(Stack & stk) {
 	while (!stk.isEmpty()) {
-		
-		cout << stk.pop() << "" << "popped" << endl;
+		char p = stk.pop();
+		if (p != '@') {
+		cout << p << " is popped" << endl;
+		}
 	}
+
 }
+
+
+
+
+
+
+

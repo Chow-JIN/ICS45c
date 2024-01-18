@@ -29,6 +29,6 @@ void count(string s, int counts[]) {
 void print_counts(int counts[], int len) {
 	for (int i = 0; i < len; i ++) {
 		char c = index_to_char(i);
-		cout << c << "" << counts[i] << "\n";
+		cout << c << " " << counts[i] << "\n";
 	}
 }

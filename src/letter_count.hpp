@@ -1,8 +1,12 @@
 int char_to_index(char ch) {
+	if (isalpha(ch)) {
 	char cha = toupper(ch);
 	int index = cha - 'A';
 	return index;
-
+	}
+	else {
+	return 999;
+	}
 }
 
 

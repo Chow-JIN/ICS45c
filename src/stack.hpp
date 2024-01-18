@@ -68,7 +68,7 @@ void pop_all(Stack & stk) {
 		cout << c;
 
 	}
-	cout << " is popped" << endl;
+	cout << endl;
 
 }
 

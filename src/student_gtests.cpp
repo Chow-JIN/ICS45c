@@ -28,11 +28,11 @@ TEST(WordCount, LoadStopWords)
 TEST(WordCount, CountWords)
 {
 	stringstream document_stream("happy sad happy ics");
-    set<string> stopwords = { "banana" };
+    set<string> stopwords = { "sad" };
     map<string, int> word_counts = count_words(document_stream, stopwords);
 
     EXPECT_EQ(word_counts["happy"], 2);
-    EXPECT_EQ(word_counts["sad"], 1);
+    EXPECT_EQ(word_counts["sad"], 0);
     EXPECT_EQ(word_counts["ics"], 1);
 
 }

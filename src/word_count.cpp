@@ -18,8 +18,8 @@ set<string> load_stopwords(istream& stopwords)
     string w;
     set<string> sw;
     while (stopwords >> w) {
-        to_lowercase(word);
-        sw.insert(word);
+        to_lowercase(w);
+        sw.insert(w);
     }
     return sw;
 }

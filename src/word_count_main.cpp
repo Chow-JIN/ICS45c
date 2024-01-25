@@ -1,6 +1,8 @@
 #include <fstream>
 #include <iostream>
-#include "word_count.h"
+#include "word_count.hpp"
+
+
 using namespace std;
 
 int main() {

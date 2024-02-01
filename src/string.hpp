@@ -14,7 +14,7 @@ public:
 	String(const String &s);
 
 
-	String &operator=(const String &s)
+	String &operator=(const String &s);
 
 
 	char &operator[](int index);
@@ -43,7 +43,7 @@ public:
 	String operator+(const String &s);
 
 
-	String operator+=(const String &s);
+	String &operator+=(const String &s);
 
 
 	void print(std::ostream &out) const;
@@ -62,13 +62,13 @@ public:
 
 	static int strlen(const char * s);
 	static char *strcpy(char *dest, const char *src);
-	static char *strcnpy(char *dest, const char *src, int n);
+	static char *strncpy(char *dest, const char *src, int n);
 	static char *strcat(char *dest, const char *src);
 	static char *strncat(char *dest, const char *src, int n);
 	static int strcmp(const char *left, const char *right);
 	static int strncmp(const char *left, const char *right, int n);
-	static void recerse_cpy(char *dest, const char *src);
-	static const char *strchr(const *str, char c);
+	static void reverse_cpy(char *dest, const char *src);
+	static const char *strchr(const char *str, char c);
 	static const char *strstr(const char *haystack, const char *needle);
 
 private:
@@ -78,6 +78,6 @@ private:
 };
 
 std::ostream &operator<<(std::ostream &out, const String &s);
-std::ostream &operator>>(std::istream &in, String &s);
+std::istream &operator>>(std::istream &in, String &s);
 #endif
 

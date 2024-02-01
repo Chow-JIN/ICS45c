@@ -20,33 +20,47 @@ TEST(StringFunction, strcpy) {
 }
 
 TEST(StringFunction, strncpy) {
-    EXPECT_TRUE(false);
+	char haha[666];
+    EXPECT_EQ(String::strncpy(haha, "666", 2), haha);
+    EXPECT_STREQ(haha, "66");
 }
 
 TEST(StringFunction, strcat) {
-    EXPECT_TRUE(false);
+	char name[10] = "SHI";
+    EXPECT_EQ(String::strcat(name, "JIN"), name);
+    EXPECT_STREQ(name, "SHIJIN");
 }
 
 TEST(StringFunction, strncat) {
-    EXPECT_TRUE(false);
+	char name[10] = "SHI";
+	EXPECT_EQ(String::strncat(name, "JIN666", 3), name);
+	EXPECT_STREQ(name, "SHIJIN");
 }
 
 TEST(StringFunction, strcmp) {
-    EXPECT_TRUE(false);
+    EXPECT_LT(String::strcmp("ABC", "def"), 0);
+	EXPECT_GT(String::strcmp("def", "ABC"), 0);
+	EXPECT_EQ(String::strcmp("abc", "abc"), 0);
 }
 
 TEST(StringFunction, strncmp) {
-    EXPECT_TRUE(false);
+    EXPECT_EQ(String::strncmp("abc", "abcd", 3), 0);
+    EXPECT_GT(String::strncmp("ABc", "ABCdEFGHIJK", 3), 0);
+    EXPECT_LT(String::strncmp("ABC", "ABcDEFJ", 3), 0);
 }
 
 TEST(StringFunction, reverse_cpy) {
-    EXPECT_TRUE(false);
+    char copy[10];
+    String::reverse_cpy(copy, "abc");
+    EXPECT_STREQ(copy, "cba");
 }
 
 TEST(StringFunction, strchr) {
-    EXPECT_TRUE(false);
+    char a[10] = "TESTME";
+	EXPECT_EQ(String::strchr(a, 'E'), (a + 1));
 }
 
 TEST(StringFunction, strstr) {
-    EXPECT_TRUE(false);
+    char a[10] = "TESTME";
+    EXPECT_EQ(String::strstr(a, "ME"), (a + 4));
 }

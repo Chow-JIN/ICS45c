@@ -43,19 +43,19 @@ char & String::operator [](int index)
 
 
 
-int String::size()
+int String::size() const
 {
     return strlen(buf);
 }
 
-String String::reverse()
+String String::reverse() const
 {
     String output;
     reverse_cpy(output.buf, buf);
     return output;
 }
 
-int String::indexOf(char c)
+int String::indexOf(char c) const
 {
     const char *p = strchr(buf, c);
     if (p == nullptr)
@@ -63,7 +63,7 @@ int String::indexOf(char c)
     return p - buf;
 }
 
-int String::indexOf(const String &s)
+int String::indexOf(const String &s) const
 {
     const char *p = strstr(buf, s.buf);
     if (p == nullptr)
@@ -101,7 +101,7 @@ bool String::operator>=(const String &s) const
     return strcmp(buf, s.buf) >= 0;
 }
 
-String String::operator+(const String &s)
+String String::operator+(const String &s) const
 {
     String output = String(buf);
     int len = output.size();
@@ -115,8 +115,6 @@ String & String::operator+=(const String &s)
 {
     int len = size();
     String output = String(s.buf);
-   // if ( (len + s.size()) > MAXLEN-1)
-       // cout << "ERROR: String Capacity Exceeded." << endl; 
     strncat(buf, output.buf, MAXLEN-1-len);
     return *this;
 }
@@ -129,8 +127,6 @@ void String::print(ostream &out) const
 void String::read(istream &in)
 {
     in >> buf;
-   // if(strlen(buf) >= MAXLEN)
-       // cout << "ERROR: String Capacity Exceeded." << endl;
     buf[MAXLEN-1] = '\0';
 }
 

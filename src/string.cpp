@@ -78,6 +78,19 @@ char & String::operator [](int index)
 }
 
 
+const char & String::operator[](int index) const
+{
+    if (!in_bounds(index))
+    {
+        cout << "ERROR: Index Out Of Bounds" << endl;
+        return buf[0];
+    }else{
+        return buf[index];
+    }
+}
+
+
+
 int String::size() const
 {
     return strlen(buf);

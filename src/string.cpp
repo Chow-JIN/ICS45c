@@ -30,7 +30,7 @@ String::String(String &&s)
 
 String::String(int len)
 {
-	buf = new char(len + 1);
+	buf = new char[len + 1];
 }
 
 
@@ -47,9 +47,11 @@ String & String::operator =(const String &s)
 {
     if (this != &s) {
         delete[] buf;
-      //  buf = strdup(s.buf);
-		buf = s.buf;
     }
+	if (this == &s) {
+		return *this;
+	}
+	buf = strdup(s.buf);
     return *this;
 }
 
@@ -57,8 +59,9 @@ String & String::operator =(const String &s)
 String & String::operator =(String &&s)
 {
 	if (this != &s) {
-        swap(s);
-        s.buf = nullptr;
+        delete[] buf;
+		buf = s.buf;
+		s.buf = nullptr;
     }
     return *this;
 }
@@ -99,9 +102,9 @@ int String::size() const
 
 String String::reverse() const
 {
-    String output;
-    reverse_cpy(output.buf, buf);
-    return output;
+    String result;
+    reverse_cpy(result.buf, buf);
+    return result;
 }
 
 

@@ -23,38 +23,67 @@ TEST(StringFunction, strcpy) {
     EXPECT_STREQ(result, "");
 }
 
+
 TEST(StringFunction, strdup) {
-    EXPECT_TRUE(false);
+    char *result1 = String::strdup("6666");
+    EXPECT_STREQ(result1, "6666");
+    delete[] result1;
+
+    char *resultt = String::strdup("");
+    EXPECT_STREQ(resultt, "");
+    delete[] resultt;
 }
 
+
+
+
+
 TEST(StringFunction, strncpy) {
-    EXPECT_TRUE(false);
+    char result3[666];
+    EXPECT_EQ(String::strncpy(result3, "666666", 2), result3);
+    EXPECT_STREQ(result3, "66");
+    EXPECT_EQ(String::strncpy(result3, "", 0), result3);
+    EXPECT_STREQ(result3, "");
 }
 
 TEST(StringFunction, strcat) {
-    EXPECT_TRUE(false);
+    char test[666];
+    String::strcpy(test, "abc");
+    const char* ttest = {"efg"};
+    EXPECT_EQ(String::strcat(test, ttest), test);
+    EXPECT_STREQ(test, "abcefg");
 }
 
 TEST(StringFunction, strncat) {
-    EXPECT_TRUE(false);
+	char name[10] = "SHI";
+	EXPECT_EQ(String::strncat(name, "JIN666", 3), name);
+	EXPECT_STREQ(name, "SHIJIN");
 }
 
 TEST(StringFunction, strcmp) {
-    EXPECT_TRUE(false);
+    EXPECT_LT(String::strcmp("ABC", "def"), 0);
+	EXPECT_GT(String::strcmp("def", "ABC"), 0);
+	EXPECT_EQ(String::strcmp("abc", "abc"), 0);
 }
 
 TEST(StringFunction, strncmp) {
-    EXPECT_TRUE(false);
+    EXPECT_EQ(String::strncmp("abc", "abcd", 3), 0);
+    EXPECT_GT(String::strncmp("ABc", "ABCdEFGHIJK", 3), 0);
+    EXPECT_LT(String::strncmp("ABC", "ABcDEFJ", 3), 0);
 }
 
 TEST(StringFunction, reverse_cpy) {
-    EXPECT_TRUE(false);
+    char copy[10];
+    String::reverse_cpy(copy, "abc");
+    EXPECT_STREQ(copy, "cba");
 }
 
 TEST(StringFunction, strchr) {
-    EXPECT_TRUE(false);
+    char a[10] = "TESTME";
+	EXPECT_EQ(String::strchr(a, 'E'), (a + 1));
 }
 
 TEST(StringFunction, strstr) {
-    EXPECT_TRUE(false);
+    char a[10] = "TESTME";
+    EXPECT_EQ(String::strstr(a, "ME"), (a + 4));
 }

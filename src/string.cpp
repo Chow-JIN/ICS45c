@@ -102,7 +102,7 @@ int String::size() const
 
 String String::reverse() const
 {
-    String result;
+    String result(strlen(buf));
     reverse_cpy(result.buf, buf);
     return result;
 }

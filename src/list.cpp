@@ -25,11 +25,12 @@ Node* from_string(const char* s){
 
 
 void free(Node* head){
-	while(head != nullptr){
-		Node* current = head;
-		delete current;
-		head = head->next;
-	}
+	if(!head)
+        return;
+    Node* temp = head;
+    free(head->next);
+    delete temp;
+    return;
 }
 
 

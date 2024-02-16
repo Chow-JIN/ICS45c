@@ -135,6 +135,8 @@ Node* append(Node* lhs, Node* rhs){
 
 
 int index(Node* head, Node* node){
+	if(head == nullptr)
+		return -1;
 	int i = 0;
     for(Node* p=head; p!=nullptr; p=p->next, ++i)
         if(p == node)

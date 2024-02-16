@@ -107,20 +107,14 @@ Node* reverse(Node* head){
 
 
 Node* append(Node* lhs, Node* rhs){
-	if (lhs == nullptr) {
-        return rhs;
-	}
-    if (rhs == nullptr) {
-        return lhs;
-    }
-
-    Node* l = lhs;
-    while (l->next != nullptr) {
-        l = l->next;
-    }
-    l->next = rhs;
-
-    return lhs;
+	Node* n = nullptr;
+    if (lhs == nullptr && rhs == nullptr) 
+	    return nullptr;
+    else if (lhs == nullptr && rhs != nullptr) 
+	    n = new Node{rhs->data, list::append(lhs, rhs->next)};
+    else 
+	    n = new Node{lhs->data, list::append(lhs->next, rhs)};
+    return n;
 	
 }
 

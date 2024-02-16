@@ -53,42 +53,31 @@ Node* copy(Node* head){
 
 
 int compare(Node* lhs, Node* rhs){
-	if (lhs == nullptr && rhs == nullptr){
+	for(; lhs!=nullptr && rhs!=nullptr; lhs=lhs->next, rhs=rhs->next)
+        if(lhs->data != rhs->data)
+            return lhs->data - rhs->data;
+    if(!lhs && !rhs)
         return 0;
-    } 
-	else if (lhs == nullptr){
-        return -1;
-    } 
-	else if (rhs == nullptr){
+    else if(!rhs)
         return 1;
-    } 
-	else {
-        for(; lhs!=nullptr && rhs!=nullptr; lhs=lhs->next, rhs=rhs->next)
-        	if(lhs->data != rhs->data)
-            	return lhs->data - rhs->data;
-		
-    }
+    else
+        return -1;
 }
 
 
 
 int compare(Node* lhs, Node* rhs, int n){
-	if (lhs == nullptr && rhs == nullptr) {
+	for(; lhs!=nullptr && rhs!=nullptr && n>0; lhs=lhs->next, rhs=rhs->next, --n)
+        if(lhs->data != rhs->data)
+            return lhs->data - rhs->data;
+    if(n == 0)
         return 0;
-    } else if (lhs == nullptr) {
-        return -1;
-    } else if (rhs == nullptr) {
+    else if(!lhs && !rhs)
+        return 0;
+    else if(!rhs)
         return 1;
-    } else if (n == 0) {
-        return 0;
-    } else {
-        for (; lhs != nullptr && rhs != nullptr && n > 0; lhs = lhs->next, rhs = rhs->next, --n) {
-            if (lhs->data != rhs->data) {
-                return lhs->data - rhs->data;
-            }
-        }
-        return 0;
-    }
+    else
+        return -1;
 }
 
 
@@ -149,7 +138,7 @@ int index(Node* head, Node* node){
 	int i = 0;
     for(Node* p=head; p!=nullptr; p=p->next, ++i)
         if(p == node)
-            return i - 1;
+            return i;
     return -1;
 }
 

@@ -29,6 +29,7 @@ void free(Node* head){
         return;
     free(head->next); 
     delete head; 
+    head = nullptr;
     return;
 }
 
@@ -115,27 +116,27 @@ Node* reverse(Node* head){
 
 
 Node* append(Node* lhs, Node* rhs){
-	if(lhs == nullptr && rhs == nullptr){
-		return nullptr;
+	if (lhs == nullptr) {
+        return rhs;
 	}
-	else if(lhs == nullptr && rhs != nullptr){
-		return list::copy(rhs);
-	}
-	else if(lhs != nullptr && rhs == nullptr){
-		return list::copy(lhs);
-	}
-	else{
-		Node* l = list::copy(lhs);
-		Node* r = list::copy(rhs);
-		last(l)->next = rhs;
-		return l;
-	}
+    if (rhs == nullptr) {
+        return lhs;
+    }
+
+    Node* l = lhs;
+    while (l->next != nullptr) {
+        l = l->next;
+    }
+    l->next = rhs;
+
+    return lhs;
+	
 }
 
 
 
 int index(Node* head, Node* node){
-	if(head == nullptr)
+	if(head == nullptr || head->data == '\0')
 		return -1;
 	int i = 0;
     for(Node* p=head; p!=nullptr; p=p->next, ++i)

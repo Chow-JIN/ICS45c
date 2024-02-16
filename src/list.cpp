@@ -25,12 +25,12 @@ Node* from_string(const char* s){
 
 
 void free(Node* head){
-	if(!head)
+    if (!head)
         return;
-    Node* temp = head;
-    free(head->next);
-    delete temp;
+    free(head->next); 
+    delete head; 
     return;
+}
 }
 
 
@@ -76,25 +76,20 @@ int compare(Node* lhs, Node* rhs){
 int compare(Node* lhs, Node* rhs, int n){
 	if (lhs == nullptr && rhs == nullptr) {
         return 0;
-    } 
-	else if (lhs == nullptr) {
+    } else if (lhs == nullptr) {
         return -1;
-    } 
-	else if (rhs == nullptr) {
+    } else if (rhs == nullptr) {
         return 1;
-	}
-	else if (n == 0) {
-		return 0;
-    } 
-	else {
-        for(; lhs!=nullptr && rhs!=nullptr && n>0; lhs=lhs->next, rhs=rhs->next, --n)
-        	if(lhs->data != rhs->data)
-            	return lhs->data - rhs->data;
-		
+    } else if (n == 0) {
+        return 0;
+    } else {
+        for (; lhs != nullptr && rhs != nullptr && n > 0; lhs = lhs->next, rhs = rhs->next, --n) {
+            if (lhs->data != rhs->data) {
+                return lhs->data - rhs->data;
+            }
+        }
+        return 0;
     }
-
-
-
 }
 
 

@@ -173,19 +173,9 @@ Node* find_list(Node* haystack, Node* needle){
 
 
 Node* nth(Node* head, int n){
-	if(n == 0){
+	if (n == 0)
 		return head;
-	}
-	Node* p = head;
-	int count = 1;
-	while(p != nullptr){
-		if(count == n){
-			return p;
-			break;
-		}
-		p = p->next;
-		++count;
-	}
+	return nth(head->next, n-1);
 }
 	
 

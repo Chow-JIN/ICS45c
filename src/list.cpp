@@ -67,7 +67,7 @@ int compare(Node* lhs, Node* rhs){
         for(; lhs!=nullptr && rhs!=nullptr; lhs=lhs->next, rhs=rhs->next)
         	if(lhs->data != rhs->data)
             	return lhs->data - rhs->data;
-		return 0;
+		
     }
 }
 
@@ -90,7 +90,7 @@ int compare(Node* lhs, Node* rhs, int n){
         for(; lhs!=nullptr && rhs!=nullptr && n>0; lhs=lhs->next, rhs=rhs->next, --n)
         	if(lhs->data != rhs->data)
             	return lhs->data - rhs->data;
-		return 0;
+		
     }
 
 
@@ -123,7 +123,7 @@ Node* reverse(Node* head){
 		next = current->next;
         current->next = last;
         last = current;
-        current = last;
+        current = next;
     }
     return last;
 }
@@ -155,7 +155,7 @@ int index(Node* head, Node* node){
 	int i = 0;
     for(Node* p=head; p!=nullptr; p=p->next, ++i)
         if(p == node)
-            return i;
+            return i - 1;
     return -1;
 }
 

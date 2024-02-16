@@ -31,7 +31,6 @@ void free(Node* head){
     delete head; 
     return;
 }
-}
 
 
 

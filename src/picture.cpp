@@ -37,7 +37,8 @@ Picture& Picture::operator=(const Picture& other){
 
 	tail = nullptr;
 	free(head);
-	*this = Picture(other);
+	head = copy(other.head);
+    	return *this;
 
 
 

@@ -41,10 +41,10 @@ public:
         if (this == &other)
             return *this;
         if (buf)
-            buf = nullptr;
+            delete[] buf;
     
         len = other.len;
-
+		buf = new int[len];
         for (int i=0; i<other.len; ++i)
             buf[i] = other.buf[i];
         return *this;

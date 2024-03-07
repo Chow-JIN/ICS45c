@@ -21,12 +21,15 @@ using namespace std;
 
 
 void Student::validate() const {
-	auto check = [](int i){ if (i < 0 || i > 100) throw domain_error("Error: invalid percentage " + i);};
-
-	for_each(quiz.begin(), quiz.end(), check);
-	for_each(hw.begin(), quiz.end(), check);
-	check(final_score);
-	}
+	auto valid = [](int n) 
+    {    
+        if (n<0 || n>100)
+            throw domain_error(string("Error: invalid percentage "+to_string(n)));
+    };
+    ranges::for_each(quiz, valid);
+    ranges::for_each(hw, valid);
+    valid(final_score);
+}
 
 
 

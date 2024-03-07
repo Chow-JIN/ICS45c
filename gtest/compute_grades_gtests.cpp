@@ -2,4 +2,7 @@
 
 #include "compute_grades.hpp"
 
-// TODO
+Test(a, b)
+{
+    EXPECT_EQUAL(0,0);
+}

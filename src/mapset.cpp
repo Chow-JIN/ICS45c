@@ -10,13 +10,15 @@ string to_lowercase(const string& str){
 	return out;
 	}
 
-set<string> load_stopwords(istream& stopwords){
-	{
-    set<string> s;
-    transform(istream_iterator<string>(stopwords), istream_iterator<string>(), inserter(s, s.end()), to_lowercase);
-    return s;
-}
 
+set<string> load_stopwords(istream& stopwords){
+	set<string> out;
+    string word;
+    while (stopwords >> word) {
+        out.insert(to_lowercase(word));
+    }
+    return out;
+	}
 
 map<string, int> count_words(istream& document, const set<string>& stopwords){
 	map<string, int> out;

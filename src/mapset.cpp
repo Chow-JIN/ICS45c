@@ -14,7 +14,7 @@ string to_lowercase(const string& str){
 set<string> load_stopwords(istream& stopwords){
 	set<string> out;
     transform(istream_iterator<string>(stopwords), istream_iterator<string>(), inserter(out, out.end()), to_lowercase);
-    }
+    
     return out;
 	}
 

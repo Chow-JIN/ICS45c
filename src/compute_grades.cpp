@@ -34,9 +34,10 @@ void Student::validate() const {
 
 
 
-strong_ordering Student::operator <=> (const Student& other) const
-{
-    return (last_name+first_name) <=> (other.last_name+other.first_name);
+std::strong_ordering Student::operator<=>(const Student& other) const {
+    if (auto p = last_name <=> other.last_name; p != 0) 
+        return p;
+    return first_name <=> other.first_name; 
 }
 
 

@@ -91,8 +91,8 @@ ostream& operator<<(ostream& out, const Student& s) {
 
 
 void Student::compute_quiz_avg(){
-	if (quiz.size() == 0) quiz_avg = 0;
-    else if (quiz.size() == 1) quiz_avg = quiz[0];
+	if (quiz.size() == 0) quiz_avg = 0.0;
+    else if (quiz.size() == 1) quiz_avg = double(quiz[0]);
     else { 
 		int min = *std::min_element(quiz.begin(), quiz.end());
         double total = accumulate(quiz.begin(), quiz.end(), 0.0);
@@ -102,8 +102,8 @@ void Student::compute_quiz_avg(){
 	}
 
 void Student::compute_hw_avg(){
-	if (hw.size() == 0) hw_avg = 0;
-    else if (hw.size() == 1) hw_avg = hw[0];
+	if (hw.size() == 0) hw_avg = 0.0;
+    else if (hw.size() == 1) hw_avg = double(hw[0]);
 	else{
 		double sum = accumulate(hw.begin(), hw.end(), 0.0);
         hw_avg = sum / hw.size();

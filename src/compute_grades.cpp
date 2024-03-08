@@ -121,7 +121,6 @@ void Student::compute_course_score(){
 void Student::compute_grade() {
 
     compute_course_score();
-    
     if (97 <= course_score) course_grade = "A+";
     else if (93 <= course_score) course_grade = "A";
     else if (90 <= course_score) course_grade = "A-";

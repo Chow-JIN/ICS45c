@@ -79,7 +79,7 @@ istream& operator>>(istream& in, Student& s){
 
 
 ostream& operator<<(ostream& out, const Student& s) {
-    out << left << setw(8) << "Name: " << s.first_name << s.last_name << '\n'
+    out << left << setw(8) << "Name: " << s.first_name << " " << s.last_name << '\n'
         << setw(8) << "HW Ave: " << s.hw_avg << '\n'
         << setw(8) << "QZ Ave: " << s.quiz_avg << '\n'
         << setw(8) << "Final: " << s.final_score << '\n'
@@ -111,15 +111,15 @@ void Student::compute_hw_avg(){
 	}
 
 void Student::compute_course_score(){
-	compute_quiz_avg();
-    compute_hw_avg();
+
 	course_score = round(0.4 * quiz_avg + 0.3 * hw_avg + 0.3 * final_score);
 
 	}
 
 
 void Student::compute_grade() {
-
+    compute_quiz_avg();
+    compute_hw_avg();
     compute_course_score();
     if (97 <= course_score) course_grade = "A+";
     else if (93 <= course_score) course_grade = "A";

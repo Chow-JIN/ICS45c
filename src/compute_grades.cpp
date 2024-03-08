@@ -51,8 +51,10 @@ istream& operator>>(istream& in, Student& s){
         istringstream stream(line);
         stream >> type;
         if (type == "Name"){
-            getline(stream, s.first_name, ' '); // Assuming the first token is the first name
-            getline(stream, s.last_name); // The rest of the line is the last name
+            string p;
+            stream >> s.first_name >> s.last_name;
+            while(stream >> p)
+                s.last_name = s.last_name + " " + p;
         }
         else if(type == "Quiz"){
             int score;
@@ -89,7 +91,7 @@ ostream& operator<<(ostream& out, const Student& s) {
 
 
 void Student::compute_quiz_avg(){
-	if (!quiz.size()) quiz_avg = 0;
+	if (quiz.size() == 0) quiz_avg = 0;
     else if (quiz.size() == 1) quiz_avg = quiz[0];
     else { 
 		int min = *std::min_element(quiz.begin(), quiz.end());
@@ -100,7 +102,7 @@ void Student::compute_quiz_avg(){
 	}
 
 void Student::compute_hw_avg(){
-	if (!hw.size()) hw_avg = 0;
+	if (hw.size() == 0) hw_avg = 0;
     else if (hw.size() == 1) hw_avg = hw[0];
 	else{
 		double sum = accumulate(hw.begin(), hw.end(), 0.0);

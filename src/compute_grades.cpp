@@ -17,8 +17,6 @@
 using namespace std;
 
 
-double quiz_avg = 0.0;
-double hw_avg = 0.0;
 
 
 void Student::validate() const {

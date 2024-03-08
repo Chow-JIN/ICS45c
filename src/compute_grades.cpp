@@ -119,8 +119,7 @@ void Student::compute_course_score(){
 
 
 void Student::compute_grade() {
-    compute_quiz_avg();
-    compute_hw_avg();
+
     compute_course_score();
     
     if (97 <= course_score) course_grade = "A+";

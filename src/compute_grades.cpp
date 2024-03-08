@@ -17,7 +17,8 @@
 using namespace std;
 
 
-
+double quiz_avg = 0.0;
+double hw_avg = 0.0;
 
 
 void Student::validate() const {
@@ -47,33 +48,34 @@ bool Student::operator==(const Student& other) const{
 	}
 
 
-
-
 istream& operator>>(istream& in, Student& s){
-	string line;
-	while(getline(in, line) && !line.empty()){
-		getline(in, line);
-		istringstream stream(line);
-		string head;
-		stream >> head;
-		if (head == "Name"){
-			stream >> s.first_name;
-			stream >> s.last_name;
-			string rest;
-			while(stream >> rest){
-				s.last_name = s.last_name + "" + rest;
-				}
-			}
-		else if(head == "Quiz")
-			for_each(istream_iterator<string>(stream), istream_iterator<string>(), [&](string quiz){s.quiz.push_back(stoi(quiz));});
-		else if(head == "HW")
-			for_each(istream_iterator<string>(stream), istream_iterator<string>(), [&](string hh) {s.hw.push_back(stoi(hh));});
-		else if(head == "Final")
-			stream >> s.final_score;
-	}
-	return in;
+    string line, type;
+    while(getline(in, line) && !line.empty()){
+        istringstream stream(line);
+        stream >> type;
+        if (type == "Name"){
+            getline(stream, s.first_name, ' '); // Assuming the first token is the first name
+            getline(stream, s.last_name); // The rest of the line is the last name
+        }
+        else if(type == "Quiz"){
+            int score;
+            while(stream >> score){
+                s.quiz.push_back(score);
+            }
+        }
+        else if(type == "HW"){
+            int score;
+            while(stream >> score){
+                s.hw.push_back(score);
+            }
+        }
+        else if(type == "Final"){
+            stream >> s.final_score;
+        }
+    }
+    return in;
+}
 
-	}
 
 
 

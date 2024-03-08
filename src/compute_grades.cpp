@@ -57,19 +57,13 @@ istream& operator>>(istream& in, Student& s){
                 s.last_name = s.last_name + " " + p;
         }
         else if(type == "Quiz"){
-            int score;
-            while(stream >> score)
-                s.quiz.push_back(score);
-	    if(s.quiz.size() == 0)
-                s.quiz.push_back(0);
+            for_each(std::istream_iterator<std::string>(stream), {},
+                    [&](std::string str){s.quiz.push_back(std::stoi(str));});
             
         }
         else if(type == "HW"){
-            int score;
-            while(stream >> score)
-                s.hw.push_back(score);
-	    if(s.hw.size()==0)
-                s.hw.push_back(0);
+            for_each(std::istream_iterator<std::string>(stream), {},
+                    [&](std::string str){s.hw.push_back(std::stoi(str));});
             
         }
         else if(type == "Final"){

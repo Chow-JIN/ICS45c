@@ -13,9 +13,7 @@ string to_lowercase(const string& str){
 
 set<string> load_stopwords(istream& stopwords){
 	set<string> out;
-    string word;
-    while (stopwords >> word) {
-        out.insert(to_lowercase(word));
+    transform(istream_iterator<string>(stopwords), istream_iterator<string>(), back_inserter(s), to_lowercase);
     }
     return out;
 	}
